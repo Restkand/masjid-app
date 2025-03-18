@@ -1,6 +1,6 @@
-# Aplikasi Web Masjid AL – Azhar
+# Aplikasi CMS Web Masjid
 
-Aplikasi web ini dibangun untuk memudahkan pengelolaan informasi, donasi, dan kegiatan Masjid AL – Azhar. Aplikasi ini terdiri dari:
+Aplikasi web ini dibangun untuk memudahkan pengelolaan informasi, donasi, dan kegiatan Masjid. Aplikasi ini terdiri dari:
 
 - **Frontend**: Dibangun dengan **Next.js** (TypeScript) dan **Tailwind CSS**.
 - **Backend**: Dibangun dengan **Express.js** dan **Prisma ORM**.
