@@ -65,6 +65,14 @@ Aplikasi web ini dibangun untuk memudahkan pengelolaan informasi, donasi, dan ke
 ```bash
 git clone https://github.com/Restkand/masjid-app.git
 cd masjid-app
+```
 
 ### 3. Setup Backend
+
+- Masuk ke direktori server:
+```bash
+cd server
+```
+
+
 
