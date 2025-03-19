@@ -1,58 +1,57 @@
 "use client";
 
-import { useState } from 'react';
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import LogoutButton from "@/components/logoutButton"; 
 
-export default function Admin() {
-  const [title, setTitle] = useState('');
-  const [content, setContent] = useState('');
-
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const response = await fetch('/api/articles', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ title, content }),
-    });
-    if (response.ok) {
-      alert('Artikel berhasil diposting!');
-      setTitle('');
-      setContent('');
-    }
-  };
+export default function AdminPage() {
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Admin - Buat Artikel Baru</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Judul</label>
-          <input
-            type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            required
-          />
+    <div className="min-h-screen bg-gray-100">
+      {/* Navbar */}
+      <nav className="bg-white shadow-sm p-4 flex justify-between items-center">
+        <Link href="/">
+          <Button variant="ghost" className="text-lg font-semibold">
+            Home
+          </Button>
+        </Link>
+        <LogoutButton /> 
+      </nav>
+
+      {/* Main Content */}
+      <div className="container mx-auto p-8">
+        <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
+
+        {/* Card Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Card 1: Master User */}
+          <Link href="/admin/MasterUser">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>Master User</CardTitle>
+                <CardDescription>Kelola data pengguna</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">Akses dan kelola semua data pengguna di sini.</p>
+              </CardContent>
+            </Card>
+          </Link>
+
+          {/* Card 2: Create Content */}
+          <Link href="/admin/CreateContent">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>Create Content</CardTitle>
+                <CardDescription>Buat konten baru</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">Buat dan publikasikan konten baru dengan mudah.</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
-        <div>
-          <label className="block text-sm font-medium text-gray-700">Konten</label>
-          <textarea
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            className="mt-1 block w-full border border-gray-300 rounded-md p-2"
-            rows={5}
-            required
-          />
-        </div>
-        <button
-          type="submit"
-          className="bg-green-600 text-white px-4 py-2 rounded-md"
-        >
-          Posting Artikel
-        </button>
-      </form>
+      </div>
     </div>
   );
 }
