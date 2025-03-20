@@ -7,36 +7,33 @@ generator client {
   provider = "prisma-client-js"
 }
 
-model UserDonation {
-  id        String   @id @default(uuid())
-  name      String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-
-  donations Donation[]
-}
 
 model UserLogin {
-  id        String   @id @default(uuid())
+  userId    String    @id @default(uuid())
   name      String
-  email     String   @unique
+  email     String    @unique
   password  String
   companyId String?
   role      String
+
+  articles  Article[] // Relasi ke Article
 }
 
 model Article {
-  id        Int      @id @default(autoincrement())
-  title     String
-  content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  articleId  Int      @id @default(autoincrement())
+  title      String
+  content    String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  userId     String   // Sesuaikan tipe dengan userId di UserLogin
+  author     UserLogin @relation(fields: [userId], references: [userId]) // Relasi ke UserLogin
 }
 
 model Donation {
-  id          Int      @id @default(autoincrement())
-  amount      Float
-  donorId     String   // Ubah tipe data dari Int menjadi String
-  donor       UserDonation     @relation(fields: [donorId], references: [id]) // Relasi ke User
-  createdAt   DateTime @default(now())
+  donationId Int      @id @default(autoincrement())
+  name       String   // Nama Pemberi Donasi
+  remark     String   // Deskripsi Donasi
+  amount     Float
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }

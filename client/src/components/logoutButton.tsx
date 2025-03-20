@@ -8,6 +8,7 @@ export default function LogoutButton() {
 
   const handleLogout = () => {
     localStorage.removeItem("token"); // Hapus token
+    localStorage.removeItem("userEmail");
     router.push("/login"); // Redirect ke halaman login
   };
 

@@ -30,7 +30,9 @@ export default function Login() {
       const data = await response.json();
   
       if (response.ok) {
+        // Simpan token dan email user di localStorage
         localStorage.setItem("token", data.token);
+        localStorage.setItem("userEmail", email); // Simpan email user
         router.push("/admin"); // Redirect ke halaman admin
       } else {
         setError(data.message || "Login failed");

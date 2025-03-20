@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 interface Article {
-  id: number;
+  articleId: number;
   title: string;
   content: string;
   createdAt: string;
@@ -23,7 +23,7 @@ export default function Informasi() {
       <h1 className="text-2xl font-bold mb-4">Artikel Terbaru</h1>
       <div className="space-y-4">
         {articles.map((article) => (
-          <div key={article.id} className="bg-white p-6 rounded-lg shadow-md">
+          <div key={article.articleId} className="bg-white p-6 rounded-lg shadow-md">
             <h2 className="text-xl font-bold">{article.title}</h2>
             <p className="text-gray-700 mt-2">{article.content}</p>
             <p className="text-sm text-gray-500 mt-2">

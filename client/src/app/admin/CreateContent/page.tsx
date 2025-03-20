@@ -8,17 +8,30 @@ export default function CreateContent() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // Ambil email user dari localStorage
+    const userEmail = localStorage.getItem("userEmail");
+
+    if (!userEmail) {
+      alert("Anda harus login untuk membuat artikel.");
+      return;
+    }
+
     const response = await fetch("/api/articles", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "user-email": userEmail, // Kirim email user di header
       },
       body: JSON.stringify({ title, content }),
     });
+
     if (response.ok) {
       alert("Artikel berhasil diposting!");
       setTitle("");
       setContent("");
+    } else {
+      alert("Gagal memposting artikel.");
     }
   };
 

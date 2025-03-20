@@ -50,6 +50,19 @@ export default function AdminPage() {
               </CardContent>
             </Card>
           </Link>
+
+          {/* Card 3: Edit Content */}
+          <Link href="/admin/EditContent">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CardTitle>Edit Content</CardTitle>
+                <CardDescription>Mengedit dan Menghapus Konten</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600">Mengkoreksi bahkan Menghilangkan Konten yang sudah pernah di buat.</p>
+              </CardContent>
+            </Card>
+          </Link>
         </div>
       </div>
     </div>
