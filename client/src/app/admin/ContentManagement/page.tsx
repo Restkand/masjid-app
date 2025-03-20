@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
@@ -87,12 +88,30 @@ export default function EditContent() {
 
   // Handle edit artikel
   const handleEdit = (id: string) => {
-    router.push(`/admin/EditContent/${id}`);
+    router.push(`/admin/ContentManagement/${id}`);
+  };
+
+  // Handle buat artikel baru
+  const handleCreateNewArticle = () => {
+    router.push("/admin/CreateContent");
   };
 
   return (
+    <div className="min-h-screen bg-gray-100">
+      {/* Navbar */}
+      <nav className="bg-white shadow-sm p-4 flex justify-between items-center">
+        <Link href="/admin">
+          <Button variant="ghost" className="text-lg font-semibold">
+            Admin
+          </Button>
+        </Link>
+      </nav>
+
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">Edit Konten</h1>
+      <div className="flex justify-between items-center mt-4 mb-4">
+        <h1 className="text-2xl font-bold">Content Managements</h1>
+        <Button onClick={handleCreateNewArticle}>Buat Artikel Baru</Button>
+      </div>
 
       {/* Filter dan Sortir */}
       <Card className="mb-4">
@@ -153,13 +172,13 @@ export default function EditContent() {
                     {format(new Date(article.createdAt), "dd/MM/yyyy")}
                   </TableCell>
                   <TableCell>
-                  <Button
-                    variant="outline"
-                    className="mr-2"
-                    onClick={() => handleEdit(article.articleId)}
-                  >
-                    Edit
-                  </Button>
+                    <Button
+                      variant="outline"
+                      className="mr-2"
+                      onClick={() => handleEdit(article.articleId)}
+                    >
+                      Edit
+                    </Button>
                     <Button
                       variant="destructive"
                       onClick={() => handleDelete(article.articleId)}
@@ -173,6 +192,7 @@ export default function EditContent() {
           </Table>
         </CardContent>
       </Card>
+    </div>
     </div>
   );
 }

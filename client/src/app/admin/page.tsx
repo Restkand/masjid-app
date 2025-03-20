@@ -36,30 +36,17 @@ export default function AdminPage() {
                 <p className="text-gray-600">Akses dan kelola semua data pengguna di sini.</p>
               </CardContent>
             </Card>
-          </Link>
+          </Link> 
 
-          {/* Card 2: Create Content */}
-          <Link href="/admin/CreateContent">
+          {/* Card 3: Master Content */}
+          <Link href="/admin/ContentManagement">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CardTitle>Create Content</CardTitle>
-                <CardDescription>Buat konten baru</CardDescription>
+                <CardTitle>Content Management </CardTitle>
+                <CardDescription>Membuat, Mengedit dan Menghapus Konten</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600">Buat dan publikasikan konten baru dengan mudah.</p>
-              </CardContent>
-            </Card>
-          </Link>
-
-          {/* Card 3: Edit Content */}
-          <Link href="/admin/EditContent">
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CardTitle>Edit Content</CardTitle>
-                <CardDescription>Mengedit dan Menghapus Konten</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <p className="text-gray-600">Mengkoreksi bahkan Menghilangkan Konten yang sudah pernah di buat.</p>
+                <p className="text-gray-600">Membuat Baru, Mengkoreksi bahkan Menghilangkan Konten yang sudah pernah di buat.</p>
               </CardContent>
             </Card>
           </Link>
