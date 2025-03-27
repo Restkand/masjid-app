@@ -30,10 +30,11 @@ model Article {
 }
 
 model Donation {
-  donationId Int      @id @default(autoincrement())
-  name       String   // Nama Pemberi Donasi
-  remark     String   // Deskripsi Donasi
-  amount     Float
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
+  donorId           Int      @id @default(autoincrement())
+  donorName    String
+  amount       Float
+  donationDate DateTime
+  notes        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
